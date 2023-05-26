@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from 'react';
+import { useState } from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -22,6 +22,11 @@ const Login = ({ onLogin }) => {
         event.preventDefault();
         const storedEmail = localStorage.getItem('email');
         const storedPassword = localStorage.getItem('password');
+
+        if (email.trim() === '' || password.trim() === '') {
+            toast.error('Будь ласка, заповніть всі поля форми.');
+            return;
+        }
 
         if (email === storedEmail && password === storedPassword) {
             toast.success('Ви успішно авторизувалися!');
